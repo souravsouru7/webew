@@ -7,10 +7,12 @@ import ValuePropsSection from './components/ValuePropsSection.jsx'
 import FeaturedListings from './components/FeaturedListings.jsx'
 import PropertyShowcase from './components/PropertyShowcase.jsx'
 import GlobeExpress from './components/GlobeExpress.jsx'
+import ArchitectureServices from './components/ArchitectureServices.jsx'
 function App() {
   return (
    <>
    <GlobeExpress/>
+   <ArchitectureServices/>
 
    </>
   );

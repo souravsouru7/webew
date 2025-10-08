@@ -6,13 +6,12 @@ import GlasshavenLanding from './components/GlasshavenLanding.jsx'
 import ValuePropsSection from './components/ValuePropsSection.jsx'
 import FeaturedListings from './components/FeaturedListings.jsx'
 import PropertyShowcase from './components/PropertyShowcase.jsx'
+import GlobeExpress from './components/GlobeExpress.jsx'
 function App() {
   return (
    <>
-    <GlasshavenLanding/>
-  <ValuePropsSection/>
-    <FeaturedListings/>
-    <PropertyShowcase/>
+   <GlobeExpress/>
+
    </>
   );
 }

@@ -1,106 +1,177 @@
-import React, { useState } from 'react';
-import { Search, User, ChevronLeft, ChevronRight } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Search, User, ChevronLeft, ChevronRight, Bed, Bath, Square, MapPin } from 'lucide-react';
 
-const destinations = [
+const properties = [
   {
     id: 1,
-    title: "SAINT ANTÖNIEN",
-    subtitle: "Switzerland Alps",
-    description: "Missed adventure within an arctic expedition towards Antartica. Mountain best can be predicted attractive even best locations.",
-    buttonText: "DISCOVER LOCATION",
-    bg: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&h=1080&fit=crop",
+    title: "BURJ KHALIFA",
+    subtitle: "Downtown Dubai",
+    description: "Luxury living in the heart of Dubai's most prestigious district. Experience world-class amenities and breathtaking city views from the world's tallest building.",
+    buttonText: "VIEW PROPERTY",
+    price: "AED 15,000,000",
+    bg: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1920&h=1080&fit=crop&q=80",
     cards: [
       {
-        location: "Snow Land - Antarctica",
-        title: "NAGANO PREFECTURE",
-        image: "https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?w=400&h=500&fit=crop"
+        location: "Palm Jumeirah - Dubai",
+        title: "OCEAN VILLA",
+        price: "AED 8,500,000",
+        size: "4,200 sqft",
+        bedrooms: 5,
+        bathrooms: 4,
+        image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&h=500&fit=crop&q=80"
       },
       {
-        location: "Sahara Desert - Morocco",
-        title: "MARRAKECH MERZOUGA",
-        image: "https://images.unsplash.com/photo-1509601762477-7327c36ae718?w=400&h=500&fit=crop"
+        location: "Dubai Marina - Dubai",
+        title: "MARINA PENTHOUSE",
+        price: "AED 12,000,000",
+        size: "3,800 sqft",
+        bedrooms: 4,
+        bathrooms: 3,
+        image: "https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=400&h=500&fit=crop&q=80"
       },
       {
-        location: "Landscape - California National Park",
-        title: "YOSEMITE NATIONAL PARK",
-        image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=500&fit=crop"
+        location: "Jumeirah Beach - Dubai",
+        title: "BEACHFRONT VILLA",
+        price: "AED 18,000,000",
+        size: "5,500 sqft",
+        bedrooms: 6,
+        bathrooms: 5,
+        image: "https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=400&h=500&fit=crop&q=80"
       },
       {
-        location: "Tigers - Costa Rica",
-        title: "LOS LANCES BEACH",
-        image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&h=500&fit=crop"
+        location: "Business Bay - Dubai",
+        title: "SKY VILLA",
+        price: "AED 6,500,000",
+        size: "2,800 sqft",
+        bedrooms: 3,
+        bathrooms: 2,
+        image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&h=500&fit=crop&q=80"
       }
     ]
   },
   {
     id: 2,
-    title: "MOUNT FUJI",
-    subtitle: "Japan",
-    description: "Experience the majestic beauty of Japan's iconic mountain. Sacred peak offering breathtaking views and cultural significance.",
-    buttonText: "DISCOVER LOCATION",
-    bg: "https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?w=1920&h=1080&fit=crop",
+    title: "EMIRATES HILLS",
+    subtitle: "Dubai Hills",
+    description: "Exclusive gated community offering luxury villas with private gardens, world-class golf courses, and premium lifestyle amenities in the heart of Dubai.",
+    buttonText: "VIEW PROPERTY",
+    price: "AED 25,000,000",
+    bg: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=1920&h=1080&fit=crop&q=80",
     cards: [
       {
-        location: "Tokyo - Japan",
-        title: "SHIBUYA CROSSING",
-        image: "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=400&h=500&fit=crop"
+        location: "Emirates Hills - Dubai",
+        title: "GOLF VILLA",
+        price: "AED 22,000,000",
+        size: "6,200 sqft",
+        bedrooms: 7,
+        bathrooms: 6,
+        image: "https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=400&h=500&fit=crop&q=80"
       },
       {
-        location: "Kyoto - Japan",
-        title: "FUSHIMI INARI",
-        image: "https://images.unsplash.com/photo-1478436127897-769e1b3f0f36?w=400&h=500&fit=crop"
+        location: "Dubai Hills - Dubai",
+        title: "HILLS MANSION",
+        price: "AED 28,000,000",
+        size: "8,500 sqft",
+        bedrooms: 8,
+        bathrooms: 7,
+        image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&h=500&fit=crop&q=80"
       },
       {
-        location: "Hokkaido - Japan",
-        title: "SAPPORO SNOW",
-        image: "https://images.unsplash.com/photo-1583387838925-5f35163cdee5?w=400&h=500&fit=crop"
+        location: "Arabian Ranches - Dubai",
+        title: "RANCH VILLA",
+        price: "AED 15,000,000",
+        size: "4,800 sqft",
+        bedrooms: 5,
+        bathrooms: 4,
+        image: "https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=400&h=500&fit=crop&q=80"
       },
       {
-        location: "Osaka - Japan",
-        title: "DOTONBORI NIGHT",
-        image: "https://images.unsplash.com/photo-1590559899731-a382839e5549?w=400&h=500&fit=crop"
+        location: "Jumeirah Islands - Dubai",
+        title: "ISLAND VILLA",
+        price: "AED 19,500,000",
+        size: "5,200 sqft",
+        bedrooms: 6,
+        bathrooms: 5,
+        image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&h=500&fit=crop&q=80"
       }
     ]
   },
   {
     id: 3,
-    title: "SANTORINI",
-    subtitle: "Greece",
-    description: "Discover the stunning white-washed buildings and blue domes. Mediterranean paradise with iconic sunset views and azure waters.",
-    buttonText: "DISCOVER LOCATION",
-    bg: "https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e?w=1920&h=1080&fit=crop",
+    title: "DUBAI CREEK",
+    subtitle: "Old Dubai",
+    description: "Historic waterfront properties combining traditional Arabian architecture with modern luxury. Experience the authentic charm of old Dubai with contemporary amenities.",
+    buttonText: "VIEW PROPERTY",
+    price: "AED 9,500,000",
+    bg: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=1920&h=1080&fit=crop&q=80",
     cards: [
       {
-        location: "OIA - SANTORINI",
-        title: "SUNSET VIEWS",
-        image: "https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=500&h=500&fit=crop"
+        location: "Dubai Creek - Dubai",
+        title: "CREEK PENTHOUSE",
+        price: "AED 8,500,000",
+        size: "3,200 sqft",
+        bedrooms: 4,
+        bathrooms: 3,
+        image: "https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=400&h=500&fit=crop&q=80"
       },
       {
-        location: "ATHENS - GREECE",
-        title: "ACROPOLIS",
-        image: "https://images.unsplash.com/photo-1555993539-1732b0258235?w=500&h=500&fit=crop"
+        location: "Deira - Dubai",
+        title: "HERITAGE VILLA",
+        price: "AED 6,800,000",
+        size: "2,800 sqft",
+        bedrooms: 3,
+        bathrooms: 2,
+        image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&h=500&fit=crop&q=80"
       },
       {
-        location: "MYKONOS - GREECE",
-        title: "WINDMILLS",
-        image: "https://images.unsplash.com/photo-1601581987809-a874a81309c9?w=500&h=500&fit=crop"
+        location: "Bur Dubai - Dubai",
+        title: "CULTURAL VILLA",
+        price: "AED 7,200,000",
+        size: "3,000 sqft",
+        bedrooms: 4,
+        bathrooms: 3,
+        image: "https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=400&h=500&fit=crop&q=80"
       },
       {
-        location: "CRETE - GREECE",
-        title: "BALOS LAGOON",
-        image: "https://images.unsplash.com/photo-1519451241324-20b4ea2c4220?w=500&h=500&fit=crop"
+        location: "Al Fahidi - Dubai",
+        title: "TRADITIONAL HOUSE",
+        price: "AED 5,500,000",
+        size: "2,200 sqft",
+        bedrooms: 3,
+        bathrooms: 2,
+        image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&h=500&fit=crop&q=80"
       }
     ]
   }
 ];
 
-export default function GlobeExpress() {
+export default function DubaiRealEstate() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [hoveredCard, setHoveredCard] = useState(null);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [slideDirection, setSlideDirection] = useState('');
+  const current = properties[currentIndex];
 
-  const current = destinations[currentIndex];
+  // Preload images for better performance
+  useEffect(() => {
+    const preloadImages = () => {
+      const imagePromises = properties.flatMap(property => [
+        property.bg,
+        ...property.cards.map(card => card.image)
+      ]).map(src => {
+        return new Promise((resolve, reject) => {
+          const img = new Image();
+          img.onload = resolve;
+          img.onerror = reject;
+          img.src = src;
+        });
+      });
+
+      Promise.all(imagePromises).catch(() => {}); // Continue even if some images fail
+    };
+
+    preloadImages();
+  }, []);
 
   const handleNext = () => {
     if (isTransitioning) return;
@@ -108,10 +179,10 @@ export default function GlobeExpress() {
     setSlideDirection('left');
     setHoveredCard(null);
     setTimeout(() => {
-      setCurrentIndex((prev) => (prev + 1) % destinations.length);
+      setCurrentIndex((prev) => (prev + 1) % properties.length);
       setSlideDirection('');
       setTimeout(() => setIsTransitioning(false), 100);
-    }, 700);
+    }, 500);
   };
 
   const handlePrev = () => {
@@ -120,10 +191,10 @@ export default function GlobeExpress() {
     setSlideDirection('right');
     setHoveredCard(null);
     setTimeout(() => {
-      setCurrentIndex((prev) => (prev - 1 + destinations.length) % destinations.length);
+      setCurrentIndex((prev) => (prev - 1 + properties.length) % properties.length);
       setSlideDirection('');
       setTimeout(() => setIsTransitioning(false), 100);
-    }, 700);
+    }, 500);
   };
 
   const handleCardHover = (index) => {
@@ -138,12 +209,12 @@ export default function GlobeExpress() {
       <div className="absolute inset-0">
         {/* Main background */}
         <div 
-          className="absolute inset-0 transition-all duration-1000 ease-out"
+          className="absolute inset-0 transition-all duration-700 ease-out"
           style={{
             backgroundImage: `url(${current.bg})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            transform: isTransitioning ? 'scale(1.1)' : 'scale(1)',
+            transform: isTransitioning ? 'scale(1.05)' : 'scale(1)',
             opacity: hoveredCard === null ? 1 : 0
           }}
         >
@@ -154,13 +225,13 @@ export default function GlobeExpress() {
         {current.cards.map((card, index) => (
           <div
             key={index}
-            className="absolute inset-0 transition-all duration-1000 ease-out"
+            className="absolute inset-0 transition-all duration-700 ease-out"
             style={{
               backgroundImage: `url(${card.image})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               opacity: hoveredCard === index ? 1 : 0,
-              transform: hoveredCard === index ? 'scale(1.05)' : 'scale(1.1)',
+              transform: hoveredCard === index ? 'scale(1.02)' : 'scale(1.05)',
             }}
           >
             <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/60"></div>
@@ -174,16 +245,16 @@ export default function GlobeExpress() {
           <div className="w-8 h-8 border-2 border-white rounded-full flex items-center justify-center">
             <div className="w-4 h-4 border-2 border-white rounded-full"></div>
           </div>
-          <span className="text-white font-bold text-xl tracking-widest">GLOBE EXPRESS</span>
+          <span className="text-white font-bold text-xl tracking-widest">DUBAI LUXURY</span>
         </div>
         
         <div className="flex items-center gap-12 text-white text-sm font-semibold tracking-wide">
           <a href="#" className="hover:text-yellow-400 transition-colors">HOME</a>
-          <a href="#" className="hover:text-yellow-400 transition-colors">HOLIDAYS</a>
-          <a href="#" className="hover:text-yellow-400 transition-colors">DESTINATIONS</a>
-          <a href="#" className="hover:text-yellow-400 transition-colors">PAGES</a>
-          <a href="#" className="hover:text-yellow-400 transition-colors">OFFERS</a>
-          <a href="#" className="hover:text-yellow-400 transition-colors">CONTACTS</a>
+          <a href="#" className="hover:text-yellow-400 transition-colors">PROPERTIES</a>
+          <a href="#" className="hover:text-yellow-400 transition-colors">LOCATIONS</a>
+          <a href="#" className="hover:text-yellow-400 transition-colors">SERVICES</a>
+          <a href="#" className="hover:text-yellow-400 transition-colors">INVESTMENT</a>
+          <a href="#" className="hover:text-yellow-400 transition-colors">CONTACT</a>
         </div>
 
         <div className="flex items-center gap-5">
@@ -197,12 +268,12 @@ export default function GlobeExpress() {
       </nav>
 
       {/* Main Content */}
-      <div className="relative z-10 h-full flex items-center">
+      <div className="relative z-10 h-full flex items-center pb-32 pt-40">
         <div className="w-full px-16">
           <div className="flex items-center justify-between gap-20">
             {/* Left Content */}
             <div 
-              className={`text-white space-y-8 flex-shrink-0 transition-all duration-700 ${
+              className={`text-white space-y-8 flex-shrink-0 transition-all duration-500 ${
                 isTransitioning 
                   ? slideDirection === 'left' 
                     ? 'opacity-0 -translate-x-20' 
@@ -216,6 +287,9 @@ export default function GlobeExpress() {
                 <h1 className="text-[7rem] font-black tracking-tighter leading-[0.85] -ml-1">
                   {current.title}
                 </h1>
+                <div className="text-3xl font-bold text-yellow-400 mt-4">
+                  {current.price}
+                </div>
               </div>
               
               <p className="text-base opacity-80 leading-relaxed font-light">
@@ -232,7 +306,7 @@ export default function GlobeExpress() {
 
             {/* Right Content - Cards */}
             <div 
-              className={`flex gap-6 flex-shrink-0 transition-all duration-700 ${
+              className={`flex gap-6 flex-shrink-0 transition-all duration-500 mb-8 ${
                 isTransitioning 
                   ? slideDirection === 'left' 
                     ? 'opacity-0 translate-x-20' 
@@ -255,13 +329,32 @@ export default function GlobeExpress() {
                   <img
                     src={card.image}
                     alt={card.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300"></div>
                   
                   <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                    <p className="text-[10px] opacity-70 mb-2 tracking-widest font-light uppercase">{card.location}</p>
-                    <h3 className="font-bold text-lg leading-tight tracking-wide">{card.title}</h3>
+                    <p className="text-[10px] opacity-70 mb-2 tracking-widest font-light uppercase flex items-center gap-1">
+                      <MapPin size={10} />
+                      {card.location}
+                    </p>
+                    <h3 className="font-bold text-lg leading-tight tracking-wide mb-2">{card.title}</h3>
+                    <div className="text-yellow-400 font-bold text-lg mb-3">{card.price}</div>
+                    <div className="flex items-center gap-4 text-xs opacity-80">
+                      <div className="flex items-center gap-1">
+                        <Bed size={12} />
+                        <span>{card.bedrooms}</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <Bath size={12} />
+                        <span>{card.bathrooms}</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <Square size={12} />
+                        <span>{card.size}</span>
+                      </div>
+                    </div>
                   </div>
 
                   {/* Hover effect border glow */}
@@ -276,29 +369,30 @@ export default function GlobeExpress() {
         </div>
       </div>
 
-      {/* Navigation Arrows */}
-      <div className="absolute bottom-16 left-16 flex gap-4 z-50">
+      {/* Navigation Arrows - Classic Centered */}
+      <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 flex gap-8 z-[60]">
         <button
           onClick={handlePrev}
           disabled={isTransitioning}
-          className="w-14 h-14 border-2 border-white/80 rounded-full flex items-center justify-center text-white hover:bg-white hover:text-black transition-all duration-300 hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed backdrop-blur-sm"
+          className="group relative w-16 h-16 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center text-white transition-all duration-300 hover:bg-white/20 hover:border-white/40 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
         >
-          <ChevronLeft size={24} />
+          <ChevronLeft size={24} className="transition-transform duration-300 group-hover:-translate-x-0.5" />
         </button>
+        
         <button
           onClick={handleNext}
           disabled={isTransitioning}
-          className="w-14 h-14 border-2 border-white/80 rounded-full flex items-center justify-center text-white hover:bg-white hover:text-black transition-all duration-300 hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed backdrop-blur-sm"
+          className="group relative w-16 h-16 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center text-white transition-all duration-300 hover:bg-white/20 hover:border-white/40 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
         >
-          <ChevronRight size={24} />
+          <ChevronRight size={24} className="transition-transform duration-300 group-hover:translate-x-0.5" />
         </button>
       </div>
 
       {/* Page Number */}
-      <div className="absolute bottom-16 right-16 z-50">
+      <div className="absolute bottom-20 right-20 z-[60]">
         <div 
-          className={`text-white text-8xl font-black transition-all duration-700 ${
-            isTransitioning ? 'opacity-0 scale-75' : 'opacity-40 scale-100'
+          className={`text-white text-8xl font-black transition-all duration-500 ${
+            isTransitioning ? 'opacity-0 scale-75' : 'opacity-50 scale-100'
           }`}
           style={{ fontFamily: 'Arial Black, sans-serif' }}
         >
@@ -307,7 +401,7 @@ export default function GlobeExpress() {
       </div>
 
       {/* Decorative sparkle */}
-      <div className="absolute bottom-24 right-52 w-12 h-12 pointer-events-none">
+      <div className="absolute bottom-32 right-60 w-12 h-12 pointer-events-none z-[55]">
         <svg viewBox="0 0 50 50" className="w-full h-full text-white/30">
           <path d="M25 0 L27 23 L50 25 L27 27 L25 50 L23 27 L0 25 L23 23 Z" fill="currentColor" />
         </svg>

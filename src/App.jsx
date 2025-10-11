@@ -8,11 +8,12 @@ import FeaturedListings from './components/FeaturedListings.jsx'
 import PropertyShowcase from './components/PropertyShowcase.jsx'
 import GlobeExpress from './components/GlobeExpress.jsx'
 import ArchitectureServices from './components/ArchitectureServices.jsx'
+import ModernHomeLanding from './components/ModernHomeLanding.jsx'
 function App() {
   return (
    <>
-   <GlobeExpress/>
-   <ArchitectureServices/>
+   
+<GlobeExpress/>
 
    </>
   );

@@ -27,7 +27,7 @@ const properties = [
         size: "3,800 sqft",
         bedrooms: 4,
         bathrooms: 3,
-        image: "https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=400&h=500&fit=crop&q=80"
+        image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&h=500&fit=crop&q=80"
       },
       {
         location: "Jumeirah Beach - Dubai",
@@ -36,7 +36,7 @@ const properties = [
         size: "5,500 sqft",
         bedrooms: 6,
         bathrooms: 5,
-        image: "https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=400&h=500&fit=crop&q=80"
+        image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&h=500&fit=crop&q=80"
       },
       {
         location: "Business Bay - Dubai",
@@ -112,7 +112,7 @@ const properties = [
         size: "3,200 sqft",
         bedrooms: 4,
         bathrooms: 3,
-        image: "https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=400&h=500&fit=crop&q=80"
+        image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400&h=500&fit=crop&q=80"
       },
       {
         location: "Deira - Dubai",
@@ -130,7 +130,7 @@ const properties = [
         size: "3,000 sqft",
         bedrooms: 4,
         bathrooms: 3,
-        image: "https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=400&h=500&fit=crop&q=80"
+        image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400&h=500&fit=crop&q=80"
       },
       {
         location: "Al Fahidi - Dubai",
@@ -240,15 +240,15 @@ export default function DubaiRealEstate() {
       </div>
 
       {/* Navigation */}
-      <nav className="absolute top-0 left-0 right-0 z-50 flex items-center justify-between px-16 py-8">
-        <div className="flex items-center gap-3">
-          <div className="w-8 h-8 border-2 border-white rounded-full flex items-center justify-center">
-            <div className="w-4 h-4 border-2 border-white rounded-full"></div>
+      <nav className="absolute top-0 left-0 right-0 z-50 flex items-center justify-between px-4 sm:px-8 lg:px-16 py-4 sm:py-6 lg:py-8">
+        <div className="flex items-center gap-2 sm:gap-3">
+          <div className="w-6 h-6 sm:w-8 sm:h-8 border-2 border-white rounded-full flex items-center justify-center">
+            <div className="w-3 h-3 sm:w-4 sm:h-4 border-2 border-white rounded-full"></div>
           </div>
-          <span className="text-white font-bold text-xl tracking-widest">DUBAI LUXURY</span>
+          <span className="text-white font-bold text-sm sm:text-lg lg:text-xl tracking-widest">DUBAI LUXURY</span>
         </div>
         
-        <div className="flex items-center gap-12 text-white text-sm font-semibold tracking-wide">
+        <div className="hidden md:flex items-center gap-6 lg:gap-12 text-white text-xs lg:text-sm font-semibold tracking-wide">
           <a href="#" className="hover:text-yellow-400 transition-colors">HOME</a>
           <a href="#" className="hover:text-yellow-400 transition-colors">PROPERTIES</a>
           <a href="#" className="hover:text-yellow-400 transition-colors">LOCATIONS</a>
@@ -257,56 +257,56 @@ export default function DubaiRealEstate() {
           <a href="#" className="hover:text-yellow-400 transition-colors">CONTACT</a>
         </div>
 
-        <div className="flex items-center gap-5">
+        <div className="flex items-center gap-3 sm:gap-5">
           <button className="text-white hover:text-yellow-400 transition-colors">
-            <Search size={22} />
+            <Search size={18} className="sm:w-5 sm:h-5" />
           </button>
           <button className="text-white hover:text-yellow-400 transition-colors">
-            <User size={22} />
+            <User size={18} className="sm:w-5 sm:h-5" />
           </button>
         </div>
       </nav>
 
       {/* Main Content */}
-      <div className="relative z-10 h-full flex items-center pb-32 pt-40">
-        <div className="w-full px-16">
-          <div className="flex items-center justify-between gap-20">
+      <div className="relative z-10 h-full flex items-center pb-20 sm:pb-32 pt-20 sm:pt-32 lg:pt-40">
+        <div className="w-full px-4 sm:px-8 lg:px-16">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-20">
             {/* Left Content */}
             <div 
-              className={`text-white space-y-8 flex-shrink-0 transition-all duration-500 ${
+              className={`text-white space-y-4 sm:space-y-6 lg:space-y-8 flex-shrink-0 transition-all duration-500 w-full lg:w-auto ${
                 isTransitioning 
                   ? slideDirection === 'left' 
                     ? 'opacity-0 -translate-x-20' 
                     : 'opacity-0 translate-x-20'
                   : 'opacity-100 translate-x-0'
               }`}
-              style={{ width: '500px' }}
+              style={{ maxWidth: '500px' }}
             >
-              <div className="space-y-3">
-                <p className="text-sm tracking-[0.3em] opacity-90 font-light">{current.subtitle}</p>
-                <h1 className="text-[7rem] font-black tracking-tighter leading-[0.85] -ml-1">
+              <div className="space-y-2 sm:space-y-3">
+                <p className="text-xs sm:text-sm tracking-[0.3em] opacity-90 font-light">{current.subtitle}</p>
+                <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tighter leading-[0.85] -ml-1">
                   {current.title}
                 </h1>
-                <div className="text-3xl font-bold text-yellow-400 mt-4">
+                <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-yellow-400 mt-2 sm:mt-4">
                   {current.price}
                 </div>
               </div>
               
-              <p className="text-base opacity-80 leading-relaxed font-light">
+              <p className="text-sm sm:text-base opacity-80 leading-relaxed font-light">
                 {current.description}
               </p>
 
-              <button className="group flex items-center gap-4 bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-300 hover:to-yellow-400 text-black font-bold px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-2xl hover:scale-105">
-                <span className="w-10 h-10 bg-black rounded-full flex items-center justify-center group-hover:rotate-90 transition-transform duration-300">
-                  <ChevronRight size={18} className="text-yellow-400" />
+              <button className="group flex items-center gap-3 sm:gap-4 bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-300 hover:to-yellow-400 text-black font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-2xl hover:scale-105 text-sm sm:text-base">
+                <span className="w-8 h-8 sm:w-10 sm:h-10 bg-black rounded-full flex items-center justify-center group-hover:rotate-90 transition-transform duration-300">
+                  <ChevronRight size={16} className="sm:w-5 sm:h-5 text-yellow-400" />
                 </span>
-                <span className="tracking-[0.15em] text-sm font-bold">{current.buttonText}</span>
+                <span className="tracking-[0.15em] text-xs sm:text-sm font-bold">{current.buttonText}</span>
               </button>
             </div>
 
             {/* Right Content - Cards */}
             <div 
-              className={`flex gap-6 flex-shrink-0 transition-all duration-500 mb-8 ${
+              className={`flex gap-3 sm:gap-4 lg:gap-6 flex-shrink-0 transition-all duration-500 mb-8 overflow-x-auto lg:overflow-visible ${
                 isTransitioning 
                   ? slideDirection === 'left' 
                     ? 'opacity-0 translate-x-20' 
@@ -317,12 +317,12 @@ export default function DubaiRealEstate() {
               {current.cards.map((card, index) => (
                 <div
                   key={index}
-                  className="group relative rounded-3xl overflow-hidden cursor-pointer transform transition-all duration-500 hover:scale-105 hover:-translate-y-4"
+                  className="group relative rounded-2xl lg:rounded-3xl overflow-hidden cursor-pointer transform transition-all duration-500 hover:scale-105 hover:-translate-y-4 flex-shrink-0 sm:w-[200px] sm:h-[280px] lg:w-[240px] lg:h-[320px]"
                   onMouseEnter={() => handleCardHover(index)}
                   onMouseLeave={() => setHoveredCard(null)}
                   style={{
-                    width: '240px',
-                    height: '320px',
+                    width: '180px',
+                    height: '240px',
                     transitionDelay: `${index * 80}ms`
                   }}
                 >
@@ -334,24 +334,24 @@ export default function DubaiRealEstate() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300"></div>
                   
-                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                    <p className="text-[10px] opacity-70 mb-2 tracking-widest font-light uppercase flex items-center gap-1">
-                      <MapPin size={10} />
+                  <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 lg:p-6 text-white">
+                    <p className="text-[8px] sm:text-[10px] opacity-70 mb-1 sm:mb-2 tracking-widest font-light uppercase flex items-center gap-1">
+                      <MapPin size={8} className="sm:w-3 sm:h-3" />
                       {card.location}
                     </p>
-                    <h3 className="font-bold text-lg leading-tight tracking-wide mb-2">{card.title}</h3>
-                    <div className="text-yellow-400 font-bold text-lg mb-3">{card.price}</div>
-                    <div className="flex items-center gap-4 text-xs opacity-80">
+                    <h3 className="font-bold text-sm sm:text-base lg:text-lg leading-tight tracking-wide mb-1 sm:mb-2">{card.title}</h3>
+                    <div className="text-yellow-400 font-bold text-sm sm:text-base lg:text-lg mb-2 sm:mb-3">{card.price}</div>
+                    <div className="flex items-center gap-2 sm:gap-3 lg:gap-4 text-[10px] sm:text-xs opacity-80">
                       <div className="flex items-center gap-1">
-                        <Bed size={12} />
+                        <Bed size={10} className="sm:w-3 sm:h-3" />
                         <span>{card.bedrooms}</span>
                       </div>
                       <div className="flex items-center gap-1">
-                        <Bath size={12} />
+                        <Bath size={10} className="sm:w-3 sm:h-3" />
                         <span>{card.bathrooms}</span>
                       </div>
                       <div className="flex items-center gap-1">
-                        <Square size={12} />
+                        <Square size={10} className="sm:w-3 sm:h-3" />
                         <span>{card.size}</span>
                       </div>
                     </div>
@@ -370,28 +370,28 @@ export default function DubaiRealEstate() {
       </div>
 
       {/* Navigation Arrows - Classic Centered */}
-      <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 flex gap-8 z-[60]">
+      <div className="absolute bottom-16 sm:bottom-20 left-1/2 transform -translate-x-1/2 flex gap-4 sm:gap-6 lg:gap-8 z-[60]">
         <button
           onClick={handlePrev}
           disabled={isTransitioning}
-          className="group relative w-16 h-16 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center text-white transition-all duration-300 hover:bg-white/20 hover:border-white/40 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
+          className="group relative w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center text-white transition-all duration-300 hover:bg-white/20 hover:border-white/40 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
         >
-          <ChevronLeft size={24} className="transition-transform duration-300 group-hover:-translate-x-0.5" />
+          <ChevronLeft size={18} className="sm:w-5 sm:h-5 lg:w-6 lg:h-6 transition-transform duration-300 group-hover:-translate-x-0.5" />
         </button>
         
         <button
           onClick={handleNext}
           disabled={isTransitioning}
-          className="group relative w-16 h-16 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center text-white transition-all duration-300 hover:bg-white/20 hover:border-white/40 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
+          className="group relative w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center text-white transition-all duration-300 hover:bg-white/20 hover:border-white/40 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
         >
-          <ChevronRight size={24} className="transition-transform duration-300 group-hover:translate-x-0.5" />
+          <ChevronRight size={18} className="sm:w-5 sm:h-5 lg:w-6 lg:h-6 transition-transform duration-300 group-hover:translate-x-0.5" />
         </button>
       </div>
 
       {/* Page Number */}
-      <div className="absolute bottom-20 right-20 z-[60]">
+      <div className="absolute bottom-16 sm:bottom-20 right-4 sm:right-8 lg:right-20 z-[60]">
         <div 
-          className={`text-white text-8xl font-black transition-all duration-500 ${
+          className={`text-white text-4xl sm:text-6xl lg:text-8xl font-black transition-all duration-500 ${
             isTransitioning ? 'opacity-0 scale-75' : 'opacity-50 scale-100'
           }`}
           style={{ fontFamily: 'Arial Black, sans-serif' }}
@@ -401,7 +401,7 @@ export default function DubaiRealEstate() {
       </div>
 
       {/* Decorative sparkle */}
-      <div className="absolute bottom-32 right-60 w-12 h-12 pointer-events-none z-[55]">
+      <div className="absolute bottom-24 sm:bottom-32 right-8 sm:right-16 lg:right-60 w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 pointer-events-none z-[55]">
         <svg viewBox="0 0 50 50" className="w-full h-full text-white/30">
           <path d="M25 0 L27 23 L50 25 L27 27 L25 50 L23 27 L0 25 L23 23 Z" fill="currentColor" />
         </svg>

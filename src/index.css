@@ -1,2 +1,26 @@
 @import "tailwindcss";
 
+@source "./index.html";
+@source "./src/**/*.{js,jsx,ts,tsx}";
+
+/* Typography stacks */
+:root {
+  /* Headlines: prefer modern display families; fall back to listed system fonts */
+  --font-headline: "Futura", "DIN", "Baskervville", "GFS Didot", "Proxima Nova", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  /* Subheadings */
+  --font-subheading: "Frutiger", Georgia, "Century Schoolbook", "Bodoni Moda", Teko, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial;
+  /* Body */
+  --font-body: "Book Antiqua", Helvetica, Roboto, Verdana, Arial, system-ui, -apple-system, "Segoe UI";
+}
+
+html {
+  font-family: var(--font-body);
+}
+
+h1, h2, h3, .font-headline {
+  font-family: var(--font-headline);
+}
+
+.font-subheading {
+  font-family: var(--font-subheading);
+}
